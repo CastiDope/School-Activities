@@ -1,0 +1,2 @@
+Joy	Boy	4	4	4	4	 80.00
+Agull	Dagull	0	0	4	0	 20.00

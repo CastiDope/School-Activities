@@ -1,0 +1,300 @@
+FINAL EXAM COMPUTER PROGRRAMING
+JOHN LAWRENCE H. CASTILLEJO
+
+1. Write a C++ class Arithmetic with the following methods that returns the score(integer only) in n
+items. The operands are random numbers from 1 to 20. (20 pts)
+
+a. Addition
+void MyClass::add(string n)
+{
+    system("cls");
+    HANDLE h= GetStdHandle(STD_OUTPUT_HANDLE);
+
+    int a, b, c;
+    int i, p, temp;
+    p = locate(k);
+
+    int n = 0;
+
+    srand (time(NULL));
+
+    for (i=0;i<item;i++)
+    {
+            a = rand()% 20 + 1;
+            b = rand()% 20 + 1;
+        design();
+        cout<<"ADDITION GAME\n"<<endl;
+
+        cout << i+1 << ".) " << a << " + " << b << " = ?\n";
+        cout<<"Answer: ";
+        cin >> c;
+        if(c == a+b)
+            {
+            cout << "Your answer is";cout<<" CORRECT!" << endl;
+            n++;
+            system("pause");
+            system("cls");
+            }
+        else {
+            cout << "WRONG ANSWER!"<<endl;
+            cout<< "CORRECT ANSWER: " << a + b << endl;
+            system("pause");
+            system("cls");
+            }
+    }
+    cout << "Total Score: " << n << " out of " << item << endl;
+}
+
+b. DIVISION
+void MyClass::divide(string n)
+{
+    system("cls");
+    int a, b, c, d;
+    int i, p, temp;
+    p = locate(k);
+
+    int n = 0;
+    HANDLE h= GetStdHandle(STD_OUTPUT_HANDLE);
+
+    srand (time(NULL));
+    for (i=0;i<item;i++)
+    {
+        a = rand()% 20 + 1;
+        b = rand()% 20 + 1;
+    cout << i+1 << ".) " << a << " / " << b << " = ?\n";
+    cout<<"Answer(quotient part): ";
+    cin >> c;
+    cout << "Answer(remainder part): ";
+    cin >> d;
+    if(c == a/b && d == a%b)
+        {
+        cout << "Your answer is";cout<<" CORRECT!" << endl;
+        n++;
+        system("pause");
+        system("cls");
+        }
+    else {
+        cout << "WRONG ANSWER!"<<endl;
+        cout<< "CORRECT_ANSWER: "<< a/b <<endl;
+        cout<<"(remainder): " << a%b << endl;
+        system("pause");
+        system("cls");
+        }
+    }
+    cout << "Total Score: " << n << " out of " << item <<endl;
+
+c. Subtraction
+void MyClass::subtract(string n)
+{
+    system("cls");
+    int a, b, c;
+    int i, p, temp;
+    p = locate(k);
+
+    int n = 0;
+    HANDLE h= GetStdHandle(STD_OUTPUT_HANDLE);
+
+    srand (time(NULL));
+    for (i=0;i<item;i++)
+    {
+        a = rand()% 20 + 1;
+        b = rand()% 20 + 1;
+
+        design();
+        cout<<"SUBTRACTION GAME"<<endl;
+        cout << i+1 << ".) " << a << " - " << b << " = ?\n";
+        cout<<"Answer: ";
+        cin >> c;
+    if(c == a-b)
+        {
+        cout << "Your answer is";cout<<" CORRECT!" << endl;
+        n++;
+        system("pause");
+        system("cls");
+        }
+    else {
+            cout << "WRONG ANSWER!"<<endl;
+            cout<< "CORRECT ANSWER: " << a - b << endl;
+            system("pause");
+            system("cls");
+            design();
+        }
+    }
+    cout << "Total Score: " << n << " out of " << item <<endl;
+}
+
+d. Multiplication
+void MyClass::multiply(string n)
+{
+    system("cls");
+    int a, b, c;
+    int i, p, temp;
+    p = locate(k);
+
+    int n = 0;
+    HANDLE h= GetStdHandle(STD_OUTPUT_HANDLE);
+
+    srand (time(NULL));
+    for (i=0;i<item;i++)
+    {
+        a = rand()% 20 + 1;
+        b = rand()% 20 + 1;
+
+        design();
+        cout<<"MULTIPLICATION GAME\n"<<endl;
+
+        cout << i+1 << ".) " << a << " x " << b << " = ?\n";
+        cout<<"Answer: ";
+        cin >> c;
+    if(c == a*b)
+        {
+            cout << "Your answer is";cout<<" CORRECT!" << endl;
+            n++;
+            system("pause");
+            system("cls");
+        }
+    else {
+            cout << "WRONG ANSWER!"<<endl;
+            cout<< "CORRECT ANSWER: " << a * b << endl;
+            system("pause");
+            system("cls");
+        }
+    }
+        cout << "Total Score: " << n << " out of " << item <<endl;
+}
+
+2. Write a C++ class on student records (Name, Quiz 1, Quiz 2, Quiz 3) using pointer
+implementation (Linked List) with the following methods: (30 pts)
+#include <iostream>
+#include <fstream>
+#include <cstring>
+#include <cmath>
+using namespace std;
+typedef struct node{
+   string name;
+   int quiz1, quiz2, quiz3;
+   struct node *next;
+}NODE;
+class Mylink{
+private:
+    NODE *head;
+    bool isEmpty();
+public:
+    void init();
+    void add(string n, int q1, int q2, int q3);
+    void del(string n);
+    void display();
+    void save();
+    void retrieve();
+};
+void Mylink::init(){
+  head = NULL;
+}	
+	2.1 
+	void Mylink::add(string n, int q1, int q2, int q3){
+	NODE *p, *q, *newNode;
+	p=q=head;
+	newNode = new NODE;
+	newNode->name = n;
+	newNode->quiz1= q1;
+	newNode->quiz2= q2;
+	newNode->quiz3= q3;
+
+	//locate the last element
+	while (p!=NULL && n > p->name){
+    	q=p;
+    	p=p->next;
+	}
+	if (p==head)
+    	head = newNode;//first element
+	else
+    	q->next = newNode;
+	newNode->next=p;
+	}
+	
+	2.2
+	void Mylink::del(string n){
+	NODE *p, *q;
+	p=q=head;
+	while (p!=NULL && p->name!=n){
+    		q=p;
+    		p=p->next;
+		}
+	if (p==NULL){
+    	cout <<"Not found!\n";
+    	system("pause");
+   	}
+	else {
+    		if (p==head)
+        	head = p->next;
+    		else
+        	q->next = p->next;
+    		free(p);
+  	     }
+	}
+
+	2.3 
+	void MyLink::purge(string n){
+	NODE *p, *q;
+	int a;
+	p=q=head;
+	if (p==NULL){
+    		cout <<"Not found.";
+    		system("pause");
+	}
+	else {
+    		for (i=a;i<marker;i++){
+            	name[i]=n[i+1];
+    	     }
+    	marker--;
+    	cout <<"Record of "<<n<<" is deleted successfully.";
+    	system("pause");
+    	}
+}
+	2.4
+
+	2.5
+	void Mylink::display(){
+	int i = 1;
+	NODE *p;
+	p=head;
+	float avg = ceil((p->quiz1+p->quiz2+p->quiz3)/3.0);
+	system("cls");
+	cout <<"     Name       Quiz#1      Quiz#2      Quiz#3      Average      Remarks"<<endl;
+	while(p!=NULL){
+    	     cout <<i++<<".) "<<p->name<<"       "<<p->quiz1<<"          "<<p->quiz2<<"          "<<p->quiz3<<"          "<<avg<<"          "<<((avg>=75) ? "PASSED":"FAILED")<<endl;
+    	     p=p->next;
+	     }
+	system("pause");
+	}
+
+3. Write a C or C++ function differentiate(Poly *f) where f is a pointer to a polynomial function f(x).
+(25 pts)
+Ex. f(x) = 2x3 – x
+2 + 2x – 2 , after differentiation f’(x) = 6x2 – 2x + 2
+Hint: Use the following definition for data type Poly:
+ 	typedef struct node {
+ 	int coeff;
+ 	int exponent;
+ 	struct node *next;
+ 	} Poly;
+ 	Poly *f;
+Answer:
+void differentiate(Poly *f){     
+Poly *current = f;     
+Poly *prev = NULL;     
+while(current != NULL){         
+	if (current->coeff == 1 && prev != NULL){             
+	prev->next = NULL;             
+	break;         
+	}         
+current->coeff = current->coeff * current->exponent;         
+current->exponent -= 1;         
+prev = current;         
+current = current->next;     
+	}     
+return; 
+}
+
+4. 
+
